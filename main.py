@@ -3,7 +3,7 @@ import json
 import yahoofinantials, database
 from flask import Flask, request, json
 
-url = 'https://webhook.site/54973112-1c81-459f-b698-2fdca84c5a5c'  # URL to Webhooks
+url = 'https://webhook.site/04b12921-3072-4fe9-8d60-9f4394e109d9'  # URL to Webhooks
 
 data = yahoofinantials.get_yahoo_data()  # get data from yahoo
 database.store_database(data)  # store in database
