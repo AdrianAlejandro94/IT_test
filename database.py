@@ -25,17 +25,14 @@ def store_database(data):
         con, cur = get_connection()  # connection to database
 
         for query in data['EURUSD=X']['prices']:
-            query = """INSERT INTO public.prices("date", high, low, "open", "close", volume, adjclose, formatted_date)
-            VALUES ({}, {}, {}, {}, {}, {}, {}, '{}')""".format(int(query['date']), query['high'], query['low'],
-                                                                query['open'], query['close'], int(query['volume']),
-                                                                query['adjclose'], query['formatted_date'])  # Insert Exchanges to database
+            data = "INSERT INTO public.prices(date, high, low, open, close, volume, adjclose, formatted_date) VALUES (%s, %s, %s, %s, %s, %s, %s, '%s')" % \
+                   (query['date'], query['high'], query['low'], query['open'], query['close'], int(query['volume']), query['adjclose'], query['formatted_date'])  # Insert Exchanges to database
 
-            query += """ON CONFLICT(formatted_date) DO UPDATE SET "date" = {}, high = {}, low = {}, 
-            "open" = {}, "close" = {}, volume = {}, adjclose = {}, formatted_date = '{}'""".format(
+            data += "ON CONFLICT(formatted_date) DO UPDATE SET date = %s, high = %s, low = %s, open = %s, close = %s, volume = %s, adjclose = %s, formatted_date = '%s'"% (
                 int(query['date']), query['high'], query['low'], query['open'], query['close'], int(query['volume']), # If exists record UPDATE
                 query['adjclose'], query['formatted_date'])
 
-            cur.execute(query)  # execute query
+            cur.execute(data)  # execute query
             con.commit()  # confirm changes in database
 
     except (Exception, psycopg2.Error) as error:  # if error display on console
