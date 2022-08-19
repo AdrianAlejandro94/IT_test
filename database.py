@@ -6,8 +6,8 @@ def get_connection():
         Method for connect to Database with PostgreSQL Credentials
     :return:
     """
-    con = psycopg2.connect(user="odoo",
-                           password="Citytech.2k20!",
+    con = psycopg2.connect(user="postgres",
+                           password="postgres",
                            host="127.0.0.1",
                            port="5432",
                            database="IT_testing")  #connection
