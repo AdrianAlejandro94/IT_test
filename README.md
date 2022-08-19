@@ -73,7 +73,7 @@ CREATE UNIQUE INDEX prices_formatted_date_idx ON public.prices USING btree (form
                            database="IT_testing")
 
 
-####6. Start the main.py File
+6 Start the main.py File
 
 
 ### USAGE
