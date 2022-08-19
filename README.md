@@ -41,15 +41,16 @@ You need to use python 3.7.9 and install this dependencies
 
 ### Installation
 
-####1. Clone the repo
+1 Clone the repo
 * git clone https://github.com/AdrianAlejandro94/IT_test.git
 
-####2. Install Python 3.7.x
+2 Install Python 3.7.x
 
-####3. install Requirements
+3 install Requirements
 * pip install -r requirements.txt
 
-####4. Create Database in PostgreSQL
+4 Create Database in PostgreSQL
+
 CREATE TABLE public.prices (
 	"date" int4 NULL,
 	high float4 NULL,
@@ -63,7 +64,7 @@ CREATE TABLE public.prices (
 CREATE UNIQUE INDEX prices_formatted_date_idx ON public.prices USING btree (formatted_date);
 
 
-####5. In database.py change the configuration of PostgreSQL 
+5 In database.py change the configuration of PostgreSQL 
 
       on = psycopg2.connect(user="postgres",
                            password="postgres",
